@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <script src="assets/js/tailwind.js"></script>
+    <script src="/assets/js/tailwind.js"></script>
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml">
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="fixed top-0 left-0 right-0 shadow-lg z-10">
+        <nav class="container mx-auto flex justify-between items-center p-4">
+            <h1 class="text-3xl font-bold mr-4">Авиаперелёты</h1>
+            <div class="flex space-x-4 list-none hidden lg:flex">
+                <li><a href="/index.html" class="hover:underline">Главная</a></li>
+                <li><a href="/public/about.html" class="hover:underline">О нас</a></li>
+                <li><a href="/public/contact.html" class="hover:underline">Контакты</a></li>
+            </div>
+            <a id="theme-toggle" class="text-2xl p-2 ml-auto">
+                <img id="theme-icon-light" src="/assets/icons/light.svg" alt="Light Theme" class="w-6 h-6 hidden">
+                <img id="theme-icon-dark" src="/assets/icons/dark.svg" alt="Dark Theme" class="w-6 h-6 hidden">
+            </a>
+            <div class="flex space-x-4 ml-2 list-none hidden lg:flex" id="auth-link">
+                <li><a href="/public/auth.html" class="hover:underline">Войти</a></li>
+            </div>
+    
+            <button id="mobile-menu-button" class="lg:hidden p-2 text-2xl">
+                <span>&#9776;</span>
+            </button>
+    
+            <div id="mobile-menu" class="lg:hidden hidden absolute top-16 right-0 shadow-lg w-48 p-4 rounded">
+                <ul class="list-none space-y-2">
+                    <li><a href="/index.html" class="block hover:underline">Главная</a></li>
+                    <li><a href="/public/about.html" class="block hover:underline">О нас</a></li>
+                    <li><a href="/public/contact.html" class="block hover:underline">Контакты</a></li>
+                    <!-- Добавляем кнопки Войти и Регистрация в мобильное меню -->
+                    <div class="list-none space-y-2" id="auth-link">
+                        <li><a href="/public/auth.html" class="hover:underline">Войти</a></li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="p-4 mt-16 text-center intro" >
+        <div class="container mx-auto px-4 flex flex-col items-center justify-center">
+            <h2 class="text-3xl mt-4 font-bold text-center">Личный кабинет</h2>
+            <p class="text-center">
+                Не переживайте о своих данных, до них никому нет дела, даже нам.
+            </p>
+        </div>
+    </section>
+
+    <main class="container mx-auto py-8 flex-1">
+        <section>
+            <h2 class="px-4 text-2xl font-semibold mb-4">Ваши данные</h2>
+            <section class="px-2 grid md:grid-cols-2 gap-6">
+                <div class="shadow-lg rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-2">Информация о пользователе</h3>
+                    <div class="grid grid-cols-[auto_1fr] gap-x-4 mb-4">
+                        
+                        <!--strong class="text-right">Почта:</strong>
+                        <span id="email"></span-->
+                        <strong class="text-right">Логин:</strong>
+                        <span id="username"></span>
+                        <strong class="text-right">Баланс:</strong>
+                        <span id="balance"></span>
+                        <!--strong class="text-right">Дата регистрации:</strong>
+                        <span id="register-date"></span-->
+                    </div>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Информация о пассажире</h3>
+                    <div class="grid grid-cols-[auto_1fr] gap-x-4">
+                        <strong class="text-right">Имя:</strong>
+                        <span id="first-name"></span>
+                        <strong class="text-right">Фамилия:</strong>
+                        <span id="last-name"></span>
+                        <strong class="text-right">Номер паспорта:</strong>
+                        <span id="passport"></span>
+                    </div>
+                    <div class="mt-4 flex gap-4">
+                        <button id="edit-button" class="flex-1 px-4 py-2 rounded ok">
+                            Изменить данные
+                        </button>
+                        <a href="/public/pay.html" class="flex-1">
+                            <button class=" px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+                                Пополнить баланс
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div id="edit-form" class="shadow-lg rounded-lg p-6 hidden">
+                    <form></form>
+                        <h3 class="text-xl font-bold mb-2">Новые данные</h3>
+                        <div class="mb-4">
+                            <label for="new-first-name" class="block text-sm font-medium">Имя</label>
+                            <input type="text" id="new-first-name" class="mt-1 block w-full p-2 rounded" placeholder="Введите новое имя">
+                        </div>
+                        <div class="mb-4">
+                            <label for="new-last-name" class="block text-sm font-medium">Фамилия</label>
+                            <input type="text" id="new-last-name" class="mt-1 block w-full p-2 rounded" placeholder="Введите новую фамилию">
+                        </div>
+                        <div class="mb-4">
+                            <label for="new-passport" class="block text-sm font-medium">Номер паспорта</label>
+                            <input type="text" id="new-passport" class="mt-1 block w-full p-2 rounded" placeholder="Введите новый номер паспорта">
+                        </div>
+                        <button id="save-button" type="button" class="px-4 py-2 rounded ok">
+                            Сохранить изменения
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </section>
+        <section>
+            <h2 class="mt-8 px-4 text-2xl font-semibold mb-4">Забронированные рейсы</h2>
+            <section id="flights-container" class="px-2 grid md:grid-cols-2 gap-6">
+                <div class="shadow-lg rounded-lg p-6 col-span-2">
+                    <h3 class="text-xl font-bold mb-2">Нет рейсов</h3>
+                    <p>
+                        Похоже что нет рейсов в ближайшее время.
+                    </p>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="py-4 mt-8">
+        <p class="text-center">&copy; 2024 Авиаперелёты. Все права защищены.</p>
+    </footer>
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/alert.js"></script>
+    <script src="/assets/js/auth.js"></script>
+    <script src="/assets/js/account.js"></script>
+    <script src="/assets/js/useres.js"></script>
+</body>
+</html>

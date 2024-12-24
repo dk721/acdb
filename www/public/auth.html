@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и Регистрация</title>
+    <script src="/assets/js/tailwind.js"></script>
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml">
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="fixed top-0 left-0 right-0 shadow-lg z-10">
+        <nav class="container mx-auto flex justify-between items-center p-4">
+            <h1 class="text-3xl font-bold mr-4">Авиаперелёты</h1>
+            <div class="flex space-x-4 list-none hidden lg:flex">
+                <li><a href="/index.html" class="hover:underline">Главная</a></li>
+                <li><a href="/public/about.html" class="hover:underline">О нас</a></li>
+                <li><a href="/public/contact.html" class="hover:underline">Контакты</a></li>
+            </div>
+            <a id="theme-toggle" class="text-2xl p-2 ml-auto">
+                <img id="theme-icon-light" src="/assets/icons/light.svg" alt="Light Theme" class="w-6 h-6 hidden">
+                <img id="theme-icon-dark" src="/assets/icons/dark.svg" alt="Dark Theme" class="w-6 h-6 hidden">
+            </a>
+            <div class="flex space-x-4 ml-2 list-none hidden lg:flex" id="auth-link">
+                <li><a href="/public/auth.html" class="hover:underline">Войти</a></li>
+            </div>
+    
+            <button id="mobile-menu-button" class="lg:hidden p-2 text-2xl">
+                <span>&#9776;</span>
+            </button>
+    
+            <div id="mobile-menu" class="lg:hidden hidden absolute top-16 right-0 shadow-lg w-48 p-4 rounded">
+                <ul class="list-none space-y-2">
+                    <li><a href="/index.html" class="block hover:underline">Главная</a></li>
+                    <li><a href="/public/about.html" class="block hover:underline">О нас</a></li>
+                    <li><a href="/public/contact.html" class="block hover:underline">Контакты</a></li>
+                    <!-- Добавляем кнопки Войти и Регистрация в мобильное меню -->
+                    <div class="list-none space-y-2" id="auth-link">
+                        <li><a href="/public/auth.html" class="hover:underline">Войти</a></li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex flex-col lg:flex-row mt-16 flex-grow">
+        <div id="expand-container" class="absolute reverse top-0 left-0 w-0 transition-all duration-300 ease-in-out"></div>
+
+        <!-- Левая часть с описанием компании -->
+        <div id="login-message" class="lg:w-1/2 p-6 flex flex-col justify-center text-center lg:text-left intro order-1 lg:order-1">
+            <h2 class="text-3xl mt-4 font-bold">С возвращением</h2>
+            <p class="text-center">
+                Введите в аккаунт чтобы мы могли продолжить путешествие.
+            </p>
+        </div>
+    
+        <!-- Левая часть с текстом регистрации -->
+        <div id="register-message" class="lg:w-1/2 p-6 flex flex-col justify-center text-center lg:text-left intro hidden order-1 lg:order-3">
+            <h2 class="text-3xl mt-4 font-bold">Добро пожаловать</h2>
+            <p class="text-center">
+                Зарегистрируйте аккаунт чтобы мы могли начать путешествие.
+            </p>
+        </div>
+    
+        <!-- Правая часть с формой -->
+        <div class="lg:w-1/2 p-6 flex justify-center items-center order-2 lg:order-2">
+            <div class="w-full max-w-md">
+                <!-- Форма входа -->
+                <section id="login-form-container">
+                    <h2 class="text-2xl font-semibold mb-4 text-center">Введите данные для входа</h2>
+                    <div class="shadow-lg rounded-lg p-6">
+                        <form action="#" method="POST" id="login-form">
+                            <div class="mb-4">
+                                <label for="username" class="block">Логин</label>
+                                <input type="username" id="username" name="username" class="w-full p-2 rounded mt-2" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="password" class="block">Пароль</label>
+                                <input type="password" id="password" name="password" class="w-full p-2 rounded mt-2" required>
+                            </div>
+                            <button type="submit" class="py-2 px-4 rounded w-full ok">
+                                Войти
+                            </button>
+                        </form>
+                    </div>
+                    <div class="mt-4 text-center ignore">
+                        <p>Нет аккаунта? <a class="like" onclick="toggleForms()">Зарегистрируйтесь</a></p>
+                    </div>
+                </section>
+    
+                <!-- Форма регистрации -->
+                <section id="register-form-container" class="hidden">
+                    <h2 class="text-2xl font-semibold mb-4 text-center">Создайте аккаунт</h2>
+                    <div class="shadow-lg rounded-lg p-6">
+                        <form action="#" method="POST" id="register-form">
+                            <div class="mb-4">
+                                <label for="register-username" class="block">Логин</label>
+                                <input type="text" id="register-username" name="username" class="w-full p-2 rounded mt-2" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="register-password" class="block">Пароль</label>
+                                <input type="password" id="register-password" name="password" class="w-full p-2 rounded mt-2" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="register-email" class="block">Email</label>
+                                <input type="email" id="register-email" name="email" class="w-full p-2 rounded mt-2" required>
+                            </div>
+                            <button type="submit" class="ok py-2 px-4 rounded w-full">
+                                Зарегистрироваться
+                            </button>
+                        </form>
+                    </div>
+                    <div class="mt-4 text-center ignore">
+                        <p>Уже есть аккаунт? <a class="like" onclick="toggleForms()">Войдите</a></p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4 z-10">
+        <p class="text-center">&copy; 2024 Авиаперелёты. Все права защищены.</p>
+    </footer>
+
+    <script src="/assets/js/redirect.js"></script>
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/alert.js"></script>
+    <script src="/assets/js/login.js"></script>
+    <script src="/assets/js/auth.js"></script>
+</body>
+</html>

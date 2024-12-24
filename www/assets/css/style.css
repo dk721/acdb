@@ -1,0 +1,129 @@
+
+:root {
+    --color-bg: #f0f0f0;
+    --color-header: #ffffff;
+    --color-text: #1c1e21;
+    --color-intro: #7134a9;
+    --color-intro-text: #ffffff;
+    --color-section: #ffffff;
+    --color-section-text: #1c1e21;
+    --color-footer: #303846;
+    --color-footer-text: #ebedf0;
+    --color-button: #1c1e21;
+    --color-button-text: #ebedf0;
+    --transition-duration: 0.3s;
+    --animation-duration: 0.3s;
+}
+
+.dark {
+    --color-bg: #191b20;
+    --color-header: #1e2127;
+    --color-text: #f3f4f6;
+    --color-intro: #7134a9;
+    --color-intro-text: #ffffff;
+    --color-section: #1e2127;
+    --color-section-text: #f3f4f6;
+    --color-footer: #303846;
+    --color-footer-text: #ebedf0;
+    --color-button: #ebedf0;
+    --color-button-text: #1c1e21;
+    --transition-duration: 0.3s;
+    --animation-duration: 0.3s;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+header {
+    background-color: var(--color-header);
+}
+
+footer {
+    background-color: var(--color-footer);
+    color: var(--color-footer-text);
+}
+
+input {
+    background-color: var(--color-bg);
+}
+
+textarea {
+    background-color: var(--color-bg);
+}
+
+main {
+    height: 100%;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+section > div {
+    background-color: var(--color-section);
+    color: var(--color-section-text);
+}
+
+div#mobile-menu {
+    background-color: var(--color-bg);
+}
+
+.intro {
+    background-color: var(--color-intro);
+    color: var(--color-intro-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro * {
+    background-color: var(--color-intro);
+    color: var(--color-intro-text);
+}
+
+a.like {
+    color: var(--color-intro)!important;
+}
+
+button.ok {
+    background-color: var(--color-button);
+    color: var(--color-button-text);
+}
+
+button.ok:hover {
+    filter: brightness(85%);
+  }
+
+div.ignore {
+    background-color: var(--color-bg)!important;
+    color: var(--color-text)!important;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+
+}
+
+#expand-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    background-color: var(--color-intro);
+    z-index: 2;
+    height: 100%;
+    transition: width var(--animation-duration) ease-in-out, left var(--animation-duration) ease-in-out;
+}
+
+#expand-container.reverse {
+    left: 100%;
+}
+
+#expand-container.active {
+    width: 100%;
+}
+
+#expand-container.reverse.active {
+    width: 100%;
+    left: 0;
+}

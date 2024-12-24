@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пополнение баланса</title>
+    <script src="/assets/js/tailwind.js"></script>
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml">
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="fixed top-0 left-0 right-0 shadow-lg z-10">
+        <nav class="container mx-auto flex justify-between items-center p-4">
+            <h1 class="text-3xl font-bold mr-4">Авиаперелёты</h1>
+            <div class="flex space-x-4 list-none hidden lg:flex">
+                <li><a href="/index.html" class="hover:underline">Главная</a></li>
+                <li><a href="/public/about.html" class="hover:underline">О нас</a></li>
+                <li><a href="/public/contact.html" class="hover:underline">Контакты</a></li>
+            </div>
+            <a id="theme-toggle" class="text-2xl p-2 ml-auto">
+                <img id="theme-icon-light" src="/assets/icons/light.svg" alt="Light Theme" class="w-6 h-6 hidden">
+                <img id="theme-icon-dark" src="/assets/icons/dark.svg" alt="Dark Theme" class="w-6 h-6 hidden">
+            </a>
+            <div class="flex space-x-4 ml-2 list-none hidden lg:flex" id="auth-link">
+                <li><a href="/public/auth.html" class="hover:underline">Войти</a></li>
+            </div>
+    
+            <button id="mobile-menu-button" class="lg:hidden p-2 text-2xl">
+                <span>&#9776;</span>
+            </button>
+    
+            <div id="mobile-menu" class="lg:hidden hidden absolute top-16 right-0 shadow-lg w-48 p-4 rounded">
+                <ul class="list-none space-y-2">
+                    <li><a href="/index.html" class="block hover:underline">Главная</a></li>
+                    <li><a href="/public/about.html" class="block hover:underline">О нас</a></li>
+                    <li><a href="/public/contact.html" class="block hover:underline">Контакты</a></li>
+                    <!-- Добавляем кнопки Войти и Регистрация в мобильное меню -->
+                    <div class="list-none space-y-2" id="auth-link">
+                        <li><a href="/public/auth.html" class="hover:underline">Войти</a></li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section class="p-4 mt-16 text-center intro" >
+        <div class="container mx-auto px-4 flex flex-col items-center justify-center">
+            <h2 class="text-3xl mt-4 font-bold text-center">Пополнение баланса</h2>
+            <p class="text-center">
+                Пожайлуста не вводите настоящий номер карты, мы всё равно не используем эти данные
+            </p>
+        </div>
+    </section>
+
+    <main class="container mx-auto py-8 flex-1 px-2">
+        <section>
+            <h2 class="text-2xl font-semibold mb-4 text-center">Пополнение баланса</h2>
+            <div class="shadow-lg rounded-lg p-6 w-full max-w-md mx-auto">
+                <form id="payment-form" method="POST">
+                    <div class="mb-4">
+                        <label for="card-number" class="block">Номер карты</label>
+                        <input id="card-number" type="text" class="w-full p-2 rounded mt-2" placeholder="Номер карты" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="amount" class="block">Сумма пополнения</label>
+                        <input id="amount" type="number" class="w-full p-2 rounded mt-2" placeholder="Сумма" required>
+                    </div>
+
+                    <button type="submit" class="w-full py-2 rounded ok">Пополнить</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 mt-8">
+        <p class="text-center">&copy; 2024 Авиаперелёты. Все права защищены.</p>
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/alert.js"></script>
+    <script src="/assets/js/auth.js"></script>
+    <script src="/assets/js/payment.js"></script>
+</body>
+</html>

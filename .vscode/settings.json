@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "string.h": "c",
+        "server.h": "c",
+        "*.tcc": "c",
+        "unordered_map": "c",
+        "istream": "c",
+        "numeric": "c",
+        "ostream": "c",
+        "sstream": "c"
+    }
+}
